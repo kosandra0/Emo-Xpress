@@ -23,12 +23,6 @@
 
 ---
 
-## Preview
-
-<p align="center">
-  <img src="assets/emo-xpress-preview.webp" alt="Emo-Xpress 1.0.0 showing the emoji library, category sidebar, search field, and emoji grid" width="900" />
-</p>
-
 ## What it does
 
 Emo-Xpress helps you find, save, revisit, and copy the right emoji without hunting through long lists or relying on an online service.
