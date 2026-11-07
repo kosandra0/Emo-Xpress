@@ -1,7 +1,7 @@
 # Emo-Xpress
 
 <p align="center">
-  <img src="assets/emo-xpress-neon-icon.png" alt="Emo-Xpress Neon Emoji Hub app icon" width="104" />
+  <img src="assets/emo-xpress-neon-icon.webp" alt="Emo-Xpress Neon Emoji Hub app icon" width="104" />
 </p>
 
 <h2 align="center">Every emotion. One expression.</h2>
