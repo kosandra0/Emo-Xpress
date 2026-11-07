@@ -2,9 +2,9 @@
 
 **Emo-Xpress 1.0.1 is designed as a local-first Windows application.**
 
-## What stays on your device
+## Information stored locally
 
-The following information is stored locally by the application:
+The application stores the following information in its local SQLite database:
 
 - Favorites.
 - Recently Used emoji history (up to 100 unique entries).
@@ -15,36 +15,34 @@ The following information is stored locally by the application:
 - Traffic-light window-control position (left or right).
 - Selected interface font preference.
 
-The application uses a local SQLite database in its Tauri application data location. On Windows, the data directory is associated with the application identifier `com.emoxpress.desktop`.
+The Windows application data location is associated with the application identifier `com.emoxpress.desktop`. The program installation folder and the user database are separate.
 
-The v1.0.1 update retained the existing application identifier and database location. The development verification report records a database backup whose SHA-256 matched before and after the update. The NSIS uninstaller is intended to keep user data when removing the program.
+## v1.0.1 data preservation
+
+The v1.0.1 installer was installed over the existing application in the development environment. Before installation, the existing database was backed up. The final development record reports that the database file's SHA-256 was identical before and after the installer update and subsequent read-only inspection.
+
+The final refinement tested writes for the newly added sidebar, traffic-light-position, and font settings on an isolated test application identifier. Those settings were not written to the owner's production database during that test round. The owner's existing Favorites, Recently Used, appearance, close behaviour, and corner-radius data were left unchanged.
 
 ## Fonts
 
-The typography selector uses fonts installed on the Windows computer. Emo-Xpress does not download fonts from remote services. A font that is not installed is shown as unavailable and is not silently applied. The selected font preference is stored locally.
+The typography selector uses fonts installed on the Windows computer. Emo-Xpress does not download fonts from remote services or bundle the selectable Windows interface fonts. A font that is not installed is shown as unavailable and is not silently applied. The selected font preference is stored locally.
 
-The interface font preference does not change the Unicode emoji sequence or the emoji font fallback used to render emoji.
+The interface font preference does not change the Unicode emoji sequence or replace the emoji font used to render emoji.
 
 ## Clipboard
 
-Emo-Xpress writes the selected emoji sequence to the Windows clipboard when you choose to copy it.
+Emo-Xpress writes the selected emoji sequence to the Windows clipboard when the user chooses to copy it.
 
-Version 1.0.1 does **not** read clipboard contents, monitor clipboard changes, maintain a system-wide clipboard history, or automatically paste into other applications.
+The application has clipboard write permission for this feature. It does **not** read clipboard contents, monitor clipboard changes, maintain a system-wide clipboard history, or automatically paste into other applications.
 
 ## Network, accounts, and tracking
 
-The v1.0.1 core features do not require:
+Emo-Xpress does not require an account, sign-in, cloud service, synchronization service, AI provider, telemetry, analytics, or advertising for its current core features.
 
-- An account or sign-in.
-- A cloud service or synchronization.
-- An AI provider.
-- Telemetry or analytics.
-- Advertising.
-- Remote font downloads.
-- Background network requests for normal app use.
+The Unicode/CLDR catalogue and Noto emoji font needed by the application are bundled with the app. Fonts selected in Typography settings are sourced from the local Windows installation, not downloaded.
 
-The Unicode/CLDR catalogue and Noto emoji font needed by the application are bundled with the app.
+The final production bundle was checked with its configured content security policy; the development record reports zero external requests during that production-bundle check. A separate operating-system-level test with the PC disconnected from the network was not recorded.
 
 ## Removing local data
 
-Uninstalling Emo-Xpress is intended not to remove the saved application data. If you choose to remove it yourself, close the application first and back up anything you want to keep. The data is stored under the Windows application data location for `com.emoxpress.desktop`.
+The application database is stored outside the program installation directory under the Windows application data location for `com.emoxpress.desktop`. Back up the database before manually removing it. The v1.0.1 final refinement round did not perform an uninstall test.

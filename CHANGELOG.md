@@ -4,56 +4,57 @@ All notable public changes to Emo-Xpress are documented here.
 
 ## [1.0.1] - 2026-11-07
 
-Desktop customization and interface refinement release. The application version remains 1.0.1; the Unicode catalogue and core emoji data are unchanged.
+Desktop interface, window customization, typography, and branding refinement. The application version remains 1.0.1; the Unicode catalogue and core emoji data are unchanged.
 
 ### Added
-- Collapsible full sidebar with expanded navigation and a compact icon-only rail.
-- Navigation tooltips in the compact sidebar.
-- Cursor-following translucent ambient glow across the application.
-- Reduced-motion and high-contrast handling for the ambient glow.
-- Animated category navigation with a sliding active indicator, subtle hover movement, and selection glow.
-- Application version label beside the Emo-Xpress name.
-- About page with application, Unicode/CLDR, and catalogue information.
+- Full collapsible sidebar with a 264 px expanded layout and an 80 px icon-only rail.
+- Navigation icons for all destinations in compact mode, including all nine categories, Settings, and About.
+- Hover tooltips for compact navigation.
+- Cursor-following translucent violet ambient glow, with reduced-motion, high-contrast, and forced-colors handling.
+- Animated category navigation with a sliding active indicator, soft selection glow, and restrained hover movement.
+- Version badge beside the Emo-Xpress name.
+- Dedicated About page with application, Unicode/CLDR, and catalogue information.
 - Left/right positioning preference for the macOS-style traffic-light window controls.
-- Typography settings with a searchable selector, live preview, and reset-to-default action.
-- Availability detection for 49 Windows system font families on the development PC. Unavailable fonts are not downloaded or silently applied.
-- Updated Neon Emoji Hub artwork across the sidebar and generated Windows application, executable, and installer icon assets.
+- Typography settings with a searchable selector, live preview, font availability detection, and Reset to Default.
+- Updated Neon Emoji Hub branding in the sidebar and generated Windows application, executable, taskbar, and installer icon assets.
 
 ### Updated
 - Sidebar collapse behaviour now applies to the entire sidebar rather than only the Categories list.
-- Main content area expands when the sidebar switches to its compact icon-only rail.
-- Window controls retain their native Close, Minimize, and Maximize/Restore actions in either left or right orientation.
-- Local settings now cover sidebar state, window-control position, and selected font family in addition to existing preferences.
-- Interface typography customization remains separate from emoji font fallback and Unicode clipboard data.
-- Installer and application branding use the updated logo.
+- Below approximately 940 px window width, the compact icon rail is forced and the manual toggle is hidden.
+- Main content area grows when the sidebar is collapsed.
+- Title remains centred when traffic lights are positioned on either side.
+- Local settings now include sidebar state, traffic-light position, and selected font family.
+- Interface typography remains separate from emoji glyph rendering and Unicode clipboard data.
 
 ### Preserved
-- 3,963 fully-qualified Unicode Emoji 18.0 entries.
-- CLDR 49 English names and annotation keywords.
-- Nine emoji categories, search, Favorites, Recently Used, and exact Unicode clipboard copying.
-- Existing application identifier, SQLite database location, and user data.
-- Offline-first operation, strict content security policy, and least-privilege Tauri permissions.
+- 3,963 fully-qualified Unicode Emoji 18.0 entries and CLDR 49 English annotations.
+- Nine categories, search, Favorites, Recently Used, and exact Unicode clipboard copying.
+- Application identifier, SQLite database location, migration, existing user data, and existing appearance/window preferences.
+- Offline-first operation, content security policy, and least-privilege Tauri permissions.
+- No database schema migration was required; the three new preferences use additive keys in the existing app_settings table.
 
 ### Verification
-- Frontend tests: 293/293 passed.
+- Frontend tests: 293/293 passed across 17 files.
 - Catalogue validation: 27/27 passed.
 - TypeScript typecheck, ESLint, and production build passed.
-- Rust formatting, compilation checks, and 2 Rust tests passed.
-- Production dependency audit: 0 vulnerabilities.
-- Native Windows mouse checks covered both traffic-light orientations.
-- Sidebar collapse, tooltips, font choice, and control-position settings worked in the real application and survived an application restart.
-- Reduced-motion and high-contrast glow fallbacks were checked in the real WebView.
-- Existing user database backup hash matched before and after the update.
+- Rust formatting and compilation checks passed; 2 Rust tests passed.
+- Production dependency audit (`npm audit --omit=dev`): 0 vulnerabilities.
+- Native Windows mouse checks covered both traffic-light orientations, Close/Minimize/Maximize, and title-bar dragging.
+- On an isolated test identifier, sidebar collapse, hover tooltip, font choice, and control-position settings were exercised in the native app and survived an application restart.
+- Cursor glow was checked with real mouse movement. Reduced-motion, contrast-more, and forced-colors behaviour was checked using WebView2 preference emulation.
+- System-tray and corner-radius behaviour were verified on an isolated build.
+- The final installer was installed over the existing v1.0.1 installation on the owner's PC. The real database was backed up and read-only checked; its SHA-256 matched before and after installation.
 
 ### Known limitations
 - The installer is unsigned.
-- Testing was performed on one Windows 10 Enterprise development PC; clean-machine, Windows 11, Windows restart, screen-reader, and hardware scaling above 100% tests remain outstanding.
-- Keyboard-focus tooltip behaviour was checked in tests and code, not separately exercised in the actual desktop window.
-- The compact sidebar is automatically used below approximately 940 px window width.
-- Font availability depends on fonts installed on the user's Windows computer. All 49 choices were available on the development PC.
-- Sustained pointer movement over the emoji grid showed around half a CPU core of activity on the development PC, with or without the cursor glow; the glow itself added no measurable CPU use in the reported comparison.
-- Some family and parent/child emoji remain grey silhouette tiles in Noto Color Emoji.
-- WebView2 text-field context menus may retain browser-provided entries.
+- Testing was performed on one Windows 10 Enterprise development PC. Windows 11, clean-machine installation, Windows restart, screen readers, real Windows High Contrast, and hardware display scaling above 100% were not tested.
+- Native resize behaviour below 940 px with the compact rail active was not repeated in this final round.
+- Keyboard-focus tooltip behaviour was tested automatically and reviewed in code, but not separately exercised with a physical keyboard in the native window.
+- The owner's real database was not modified to test the new sidebar, font, or traffic-light-position setting writes; those writes were tested on an isolated identifier. The owner's production database hash and contents were preserved.
+- All 49 fonts were installed on the development PC; other computers may have fewer.
+- Some family and parent/child emoji render as grey silhouette tiles in Noto Color Emoji.
+- WebView2 text-field context menus may still list browser-provided “Emoji” and “Import passwords” entries.
+- Sidebar transition frame times were not profiled. The installer is unsigned.
 
 ## [1.0.0] - 2026-11-07
 
