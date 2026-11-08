@@ -2,6 +2,46 @@
 
 All notable public changes to Emo-Xpress are documented here.
 
+## [1.1.1] — 2026-11-08
+
+### Added
+- Offline Update Logs destination below About, with date navigation, chronological entries, detailed expandable history and honest handling of missing timestamps.
+- Ten Emoji Name Styles: Monochrome, Violet Mist, Glacier, Mint Leaf, Rose Petal, Coral Peach, Amber Gold, Deep Ocean, Pistachio Pastel and Bold Focus.
+- Ten additional application palettes: Sakura Mist, Tranquil Sky, Lavender Haze, Forest Sanctuary, Arctic Serenity, Desert Dusk, Moonlit Pearl, Coastal Breeze, Peach Blossom and Amethyst Calm.
+- Developer attribution in About: kosandra0 (musafir), with the GitHub profile link and copy-link fallback.
+
+### Improved
+- Settings and About now adapt to the available content viewport, with responsive cards, grids, text wrapping and controls.
+- Application palette system now has 18 themes (the original eight plus ten new palettes), with distinct surface tokens across backgrounds, sidebar, headers, cards, controls, borders and feedback surfaces.
+- Emoji card-name styling is independently selectable and persisted, without changing emoji glyphs, Unicode strings or general interface typography.
+- Updated v1.1.1 logo and Windows icon artwork across the application and generated Windows assets.
+- Integrated responsive, theme, name-style, Update Logs, attribution and branding changes while preserving existing v1.1.0 features.
+
+### Fixed
+- Settings and About no longer remain constrained to the old narrow fixed-width column when the window is maximised or resized.
+- Collection emoji-picker search-field spacing corrected.
+- Accessibility names and layout issues identified during integration testing corrected.
+
+### Compatibility
+- No new SQLite schema migration was introduced for v1.1.1. Theme and Emoji Name Style preferences use the existing settings mechanism; Update Logs are bundled static content.
+- Existing v1.1.0 theme IDs remain valid. Unknown theme/style values fall back safely.
+- No dependency, permission, capability or CSP changes were reported in the final development record.
+- The v1.1.0 → v1.1.1 upgrade and return-to-v1.1.0 path were tested using disposable Windows Sandbox profiles. Always back up your database before upgrading.
+
+### Verification
+- Frontend tests: 2,815 passed across 35 files.
+- Rust tests: 4 passed.
+- Typecheck, lint, Unicode catalogue validation, production build and Rust formatting/checks passed.
+- Production dependency audit: 0 vulnerabilities.
+- Windows Sandbox installer checks: 126/126 passed.
+- Native Windows checks covered responsive layouts, theme and Emoji Name Style behaviour, Update Logs, developer profile link, clipboard copying and updated branding.
+
+### Known limitations
+- Installer is unsigned.
+- Windows 11, screen readers, a real Windows High Contrast session, hardware display scaling above 100%, interactive SmartScreen behaviour and the installer's online WebView2 download step were not tested.
+- Large logo renditions may appear slightly soft because the supplied source artwork is 226 × 226.
+- Some OS-level title-bar and tray interactions were not re-run for this release.
+
 ## [1.1.0] — 2026-11-08
 
 ### Added
