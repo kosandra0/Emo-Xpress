@@ -1,48 +1,50 @@
 # Privacy
 
-**Emo-Xpress 1.0.1 is designed as a local-first Windows application.**
+**Emo-Xpress 1.1.0 is a local-first Windows desktop application.**
 
 ## Information stored locally
 
-The application stores the following information in its local SQLite database:
+Emo-Xpress stores user preferences and user-created content in its local SQLite database under the Windows application data location for application identifier `com.emoxpress.desktop`. The program installation directory and the user database are separate.
+
+Depending on the features used, locally stored information includes:
 
 - Favorites.
 - Recently Used emoji history (up to 100 unique entries).
-- Appearance preference (System, Light, or Dark).
+- Personal collection names, ordering and emoji membership.
+- Folder names, ordering and collection-to-folder relationships.
+- Saved custom combination names and their ordered emoji sequences.
+- Appearance preference (System, Light or Dark).
+- Selected colour-theme palette.
 - Close behaviour (minimize to system tray or exit application).
 - Window corner-radius preference.
-- Sidebar expanded or collapsed preference.
-- Traffic-light window-control position (left or right).
+- Sidebar expanded/collapsed preference.
+- Traffic-light window-control position.
 - Selected interface font preference.
 
-The Windows application data location is associated with the application identifier `com.emoxpress.desktop`. The program installation folder and the user database are separate.
+The application does not require an account or cloud profile to use these features.
 
-## v1.0.1 data preservation
+## Database migration and backups
 
-The v1.0.1 installer was installed over the existing application in the development environment. Before installation, the existing database was backed up. The final development record reports that the database file's SHA-256 was identical before and after the installer update and subsequent read-only inspection.
+The first launch of v1.1.0 applies SQLite migration `0002`, which adds the data structures used for collections, folders and combinations. Existing v1.0.1 Favorites, Recently Used and settings are preserved by the tested upgrade.
 
-The final refinement tested writes for the newly added sidebar, traffic-light-position, and font settings on an isolated test application identifier. Those settings were not written to the owner's production database during that test round. The owner's existing Favorites, Recently Used, appearance, close behaviour, and corner-radius data were left unchanged.
-
-## Fonts
-
-The typography selector uses fonts installed on the Windows computer. Emo-Xpress does not download fonts from remote services or bundle the selectable Windows interface fonts. A font that is not installed is shown as unavailable and is not silently applied. The selected font preference is stored locally.
-
-The interface font preference does not change the Unicode emoji sequence or replace the emoji font used to render emoji.
+**The database migration is one-way for application compatibility:** v1.0.1 cannot open a database after migration 0002 has been applied. Back up `emoxpress.db` before upgrading. Keep matching `emoxpress.db-wal` and `emoxpress.db-shm` files with the backup if they exist. The release notes document the downgrade and restore procedure.
 
 ## Clipboard
 
-Emo-Xpress writes the selected emoji sequence to the Windows clipboard when the user chooses to copy it.
+Emo-Xpress writes an emoji or saved combination to the Windows clipboard only when the user chooses to copy it. A custom combination is copied as its ordered sequence, with no inserted separators.
 
-The application has clipboard write permission for this feature. It does **not** read clipboard contents, monitor clipboard changes, maintain a system-wide clipboard history, or automatically paste into other applications.
+The application has clipboard write permission for this feature. It does **not** read clipboard contents, monitor clipboard changes, maintain a system-wide clipboard history, or automatically paste into other applications. Copying a combination does not add it to Recently Used.
 
-## Network, accounts, and tracking
+## Fonts and emoji rendering
 
-Emo-Xpress does not require an account, sign-in, cloud service, synchronization service, AI provider, telemetry, analytics, or advertising for its current core features.
+The typography selector uses fonts installed on the Windows computer. Emo-Xpress does not download selectable interface fonts. The bundled Noto Color Emoji font is used for emoji rendering; the chosen interface font does not alter the Unicode sequence copied to the clipboard.
 
-The Unicode/CLDR catalogue and Noto emoji font needed by the application are bundled with the app. Fonts selected in Typography settings are sourced from the local Windows installation, not downloaded.
+## Network, accounts and tracking
 
-The final production bundle was checked with its configured content security policy; the development record reports zero external requests during that production-bundle check. A separate operating-system-level test with the PC disconnected from the network was not recorded.
+Core application features are designed to use the bundled catalogue and local database. Emo-Xpress does not require an account, cloud synchronization, AI provider, telemetry, analytics or advertising.
+
+The installer may need the WebView2 runtime. The v1.1.0 Sandbox verification supplied a runtime to the test environment; the installer's own WebView2 download step was not exercised in that test.
 
 ## Removing local data
 
-The application database is stored outside the program installation directory under the Windows application data location for `com.emoxpress.desktop`. Back up the database before manually removing it. The v1.0.1 final refinement round did not perform an uninstall test.
+The application database is stored outside the program installation directory under the Windows application data location for `com.emoxpress.desktop`. Back up the database before manually removing it. Uninstalling the application and deleting its user data are separate actions; consult the release notes before removing database files.

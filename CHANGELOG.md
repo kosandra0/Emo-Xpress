@@ -2,6 +2,26 @@
 
 All notable public changes to Emo-Xpress are documented here.
 
+## [1.1.0] — 2026-11-08
+
+### Added
+- Personal collections: create, rename, reorder, delete; per-collection search; *Add to collection* from All Emojis, categories, Favorites and Recently Used.
+- Folders for collections (create, rename, delete, move, ordering); deleting a folder keeps its collections.
+- Custom combinations: builder (1–32 emojis), Saved Combinations hub, edit, delete, exact copy to the clipboard, placement in collections. Copying a combination does not touch Recently Used.
+- Eight colour themes (Settings → Theme) applied with `data-palette`, independent of Dark / Light (`data-theme`); startup hold prevents a flash of the default theme.
+- Database migration `0002_collections.sql` (new tables only; v1.0.1 tables are not modified).
+
+### Changed
+- Window controls (red / yellow / green) are now 24 × 24 CSS px click targets (WCAG 2.2 AA 2.5.8); the visible dots stay 13 px; the title bar's side padding is 10 px so the first dot stays in place.
+- Version 1.0.1 → 1.1.0 in `package.json`, `package-lock.json`, `src-tauri/Cargo.toml`, `src-tauri/Cargo.lock` and `src-tauri/tauri.conf.json`.
+
+### Compatibility
+- The upgrade is one-way: 1.0.1 cannot open a database migrated by 1.1.0 (it shows a storage notice and leaves the file unchanged). See `RELEASE_NOTES_v1.1.0.md` for the backup and rollback procedure.
+- No dependency, permission, CSP or capability change.
+
+### Verification
+- 1,144 Vitest tests, 3 Rust tests, typecheck, lint, catalogue validation, production build and production dependency audit pass; installer, upgrade, uninstall, reinstall and downgrade/restore verified in Windows Sandbox (85/85 checks).
+
 ## [1.0.1] - 2026-11-07
 
 Desktop interface, window customization, typography, and branding refinement. The application version remains 1.0.1; the Unicode catalogue and core emoji data are unchanged.
@@ -38,7 +58,7 @@ Desktop interface, window customization, typography, and branding refinement. Th
 - Catalogue validation: 27/27 passed.
 - TypeScript typecheck, ESLint, and production build passed.
 - Rust formatting and compilation checks passed; 2 Rust tests passed.
-- Production dependency audit (`npm audit --omit=dev`): 0 vulnerabilities.
+- Production dependency audit (npm audit --omit=dev): 0 vulnerabilities.
 - Native Windows mouse checks covered both traffic-light orientations, Close/Minimize/Maximize, and title-bar dragging.
 - On an isolated test identifier, sidebar collapse, hover tooltip, font choice, and control-position settings were exercised in the native app and survived an application restart.
 - Cursor glow was checked with real mouse movement. Reduced-motion, contrast-more, and forced-colors behaviour was checked using WebView2 preference emulation.
