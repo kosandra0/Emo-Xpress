@@ -1,46 +1,32 @@
 # Changelog
 
-All notable public changes to Emo-Xpress are documented here.
+All notable changes to Emo-Xpress. Dates are in India Standard Time. Earlier entries are summarised from `MASTER_DEVELOPMENT.md`.
 
 ## [1.1.1] — 2026-11-08
 
 ### Added
-- Offline Update Logs destination below About, with date navigation, chronological entries, detailed expandable history and honest handling of missing timestamps.
-- Ten Emoji Name Styles: Monochrome, Violet Mist, Glacier, Mint Leaf, Rose Petal, Coral Peach, Amber Gold, Deep Ocean, Pistachio Pastel and Bold Focus.
-- Ten additional application palettes: Sakura Mist, Tranquil Sky, Lavender Haze, Forest Sanctuary, Arctic Serenity, Desert Dusk, Moonlit Pearl, Coastal Breeze, Peach Blossom and Amethyst Calm.
-- Developer attribution in About: kosandra0 (musafir), with the GitHub profile link and copy-link fallback.
+- Update Logs page (below About): the application's history by date, with detailed entries, release/milestone labels and honest handling of missing times; bundled and offline.
+- Ten new application themes (Sakura Mist, Tranquil Sky, Lavender Haze, Forest Sanctuary, Arctic Serenity, Desert Dusk, Moonlit Pearl, Coastal Breeze, Peach Blossom, Amethyst Calm): 18 in total, each with Dark and Light variants and previews painted with their real tokens.
+- Ten Emoji Name Styles (Settings → Emoji Name Style) for the names under emoji cards, with live previews on real cards, Reset to Default, and contrast adjusted per theme and appearance (setting key `emoji_name_style`).
+- Developer card in About ("kosandra0 (musafir)") with the GitHub profile link, opened by one fixed native command, and a Copy link fallback.
+- New v1.1.1 logo in the sidebar, About page and the generated Windows icon set.
 
-### Improved
-- Settings and About now adapt to the available content viewport, with responsive cards, grids, text wrapping and controls.
-- Application palette system now has 18 themes (the original eight plus ten new palettes), with distinct surface tokens across backgrounds, sidebar, headers, cards, controls, borders and feedback surfaces.
-- Emoji card-name styling is independently selectable and persisted, without changing emoji glyphs, Unicode strings or general interface typography.
-- Updated v1.1.1 logo and Windows icon artwork across the application and generated Windows assets.
-- Integrated responsive, theme, name-style, Update Logs, attribution and branding changes while preserving existing v1.1.0 features.
+### Changed
+- Themes now restyle the whole window (page, ambient light, glass, cards, borders, dialogs, toasts, shadows), not only the accent colours; Default is unchanged.
+- Settings and About use their container width (responsive from the minimum window to maximized, sidebar expanded or collapsed).
+- Version 1.1.0 → 1.1.1 in `package.json`, `package-lock.json`, `src-tauri/Cargo.toml`, `src-tauri/Cargo.lock` and `src-tauri/tauri.conf.json`.
 
 ### Fixed
-- Settings and About no longer remain constrained to the old narrow fixed-width column when the window is maximised or resized.
-- Collection emoji-picker search-field spacing corrected.
-- Accessibility names and layout issues identified during integration testing corrected.
+- Settings sections with multi-word titles had no accessible name (invalid `aria-labelledby` ids).
+- The collection emoji picker's search field left a large gap above the results (a row-sized flex basis inside a column).
 
 ### Compatibility
-- No new SQLite schema migration was introduced for v1.1.1. Theme and Emoji Name Style preferences use the existing settings mechanism; Update Logs are bundled static content.
-- Existing v1.1.0 theme IDs remain valid. Unknown theme/style values fall back safely.
-- No dependency, permission, capability or CSP changes were reported in the final development record.
-- The v1.1.0 → v1.1.1 upgrade and return-to-v1.1.0 path were tested using disposable Windows Sandbox profiles. Always back up your database before upgrading.
+- No new database migration (still `0001` and `0002`); the theme and name style are ordinary `app_settings` rows. 1.1.0 opens a database used by 1.1.1 and ignores the two newer values (it shows its own default look and leaves them untouched). See `RELEASE_NOTES_v1.1.1.md`.
+- No dependency, permission, CSP or capability change.
 
 ### Verification
-- Frontend tests: 2,815 passed across 35 files.
-- Rust tests: 4 passed.
-- Typecheck, lint, Unicode catalogue validation, production build and Rust formatting/checks passed.
-- Production dependency audit: 0 vulnerabilities.
-- Windows Sandbox installer checks: 126/126 passed.
-- Native Windows checks covered responsive layouts, theme and Emoji Name Style behaviour, Update Logs, developer profile link, clipboard copying and updated branding.
-
-### Known limitations
-- Installer is unsigned.
-- Windows 11, screen readers, a real Windows High Contrast session, hardware display scaling above 100%, interactive SmartScreen behaviour and the installer's online WebView2 download step were not tested.
-- Large logo renditions may appear slightly soft because the supplied source artwork is 226 × 226.
-- Some OS-level title-bar and tray interactions were not re-run for this release.
+- Installer `Emo-Xpress_1.1.1_x64-setup.exe`, 4,494,821 bytes, SHA-256 `ca1a7e72fbc31f99bf37b872630c942f4e564da22942c1ef0e0eb8ab3d379457`, not code-signed.
+- 2,815 vitest tests (35 files), 4 Rust tests, typecheck, lint, catalogue validation, build and audit pass; installer, upgrade from 1.1.0, uninstall, reinstall, downgrade to 1.1.0 and restore verified in Windows Sandbox (126/126 checks).
 
 ## [1.1.0] — 2026-11-08
 
@@ -60,89 +46,13 @@ All notable public changes to Emo-Xpress are documented here.
 - No dependency, permission, CSP or capability change.
 
 ### Verification
-- 1,144 Vitest tests, 3 Rust tests, typecheck, lint, catalogue validation, production build and production dependency audit pass; installer, upgrade, uninstall, reinstall and downgrade/restore verified in Windows Sandbox (85/85 checks).
+- Installer `Emo-Xpress_1.1.0_x64-setup.exe`, 4,460,811 bytes, SHA-256 `d17e2bc1e6e1bb4008dea80551370c767bafae0cd6cfdc97c273c4717500e008`, not code-signed.
+- 1,144 vitest tests, 3 Rust tests, typecheck, lint, catalogue validation, build and audit pass; installer, upgrade, uninstall, reinstall and downgrade/restore verified in Windows Sandbox (85/85 checks).
 
-## [1.0.1] - 2026-11-07
+## [1.0.1] — 2026-11-07
+- Custom title bar with macOS-style window controls, system tray and Close Behaviour, Window Corner Radius, animated and collapsible sidebar, cursor-following glow, About page, window-controls position (left / right), font choice, new logo and icons.
+- Installers: `Emo-Xpress_1.0.1_x64-setup.exe`, SHA-256 `677b95a15aa8fb25a10057ac6f9863923a0229b64a7c542ff8ab63331f968798` (final build), not code-signed.
 
-Desktop interface, window customization, typography, and branding refinement. The application version remains 1.0.1; the Unicode catalogue and core emoji data are unchanged.
-
-### Added
-- Full collapsible sidebar with a 264 px expanded layout and an 80 px icon-only rail.
-- Navigation icons for all destinations in compact mode, including all nine categories, Settings, and About.
-- Hover tooltips for compact navigation.
-- Cursor-following translucent violet ambient glow, with reduced-motion, high-contrast, and forced-colors handling.
-- Animated category navigation with a sliding active indicator, soft selection glow, and restrained hover movement.
-- Version badge beside the Emo-Xpress name.
-- Dedicated About page with application, Unicode/CLDR, and catalogue information.
-- Left/right positioning preference for the macOS-style traffic-light window controls.
-- Typography settings with a searchable selector, live preview, font availability detection, and Reset to Default.
-- Updated Neon Emoji Hub branding in the sidebar and generated Windows application, executable, taskbar, and installer icon assets.
-
-### Updated
-- Sidebar collapse behaviour now applies to the entire sidebar rather than only the Categories list.
-- Below approximately 940 px window width, the compact icon rail is forced and the manual toggle is hidden.
-- Main content area grows when the sidebar is collapsed.
-- Title remains centred when traffic lights are positioned on either side.
-- Local settings now include sidebar state, traffic-light position, and selected font family.
-- Interface typography remains separate from emoji glyph rendering and Unicode clipboard data.
-
-### Preserved
-- 3,963 fully-qualified Unicode Emoji 18.0 entries and CLDR 49 English annotations.
-- Nine categories, search, Favorites, Recently Used, and exact Unicode clipboard copying.
-- Application identifier, SQLite database location, migration, existing user data, and existing appearance/window preferences.
-- Offline-first operation, content security policy, and least-privilege Tauri permissions.
-- No database schema migration was required; the three new preferences use additive keys in the existing app_settings table.
-
-### Verification
-- Frontend tests: 293/293 passed across 17 files.
-- Catalogue validation: 27/27 passed.
-- TypeScript typecheck, ESLint, and production build passed.
-- Rust formatting and compilation checks passed; 2 Rust tests passed.
-- Production dependency audit (npm audit --omit=dev): 0 vulnerabilities.
-- Native Windows mouse checks covered both traffic-light orientations, Close/Minimize/Maximize, and title-bar dragging.
-- On an isolated test identifier, sidebar collapse, hover tooltip, font choice, and control-position settings were exercised in the native app and survived an application restart.
-- Cursor glow was checked with real mouse movement. Reduced-motion, contrast-more, and forced-colors behaviour was checked using WebView2 preference emulation.
-- System-tray and corner-radius behaviour were verified on an isolated build.
-- The final installer was installed over the existing v1.0.1 installation on the owner's PC. The real database was backed up and read-only checked; its SHA-256 matched before and after installation.
-
-### Known limitations
-- The installer is unsigned.
-- Testing was performed on one Windows 10 Enterprise development PC. Windows 11, clean-machine installation, Windows restart, screen readers, real Windows High Contrast, and hardware display scaling above 100% were not tested.
-- Native resize behaviour below 940 px with the compact rail active was not repeated in this final round.
-- Keyboard-focus tooltip behaviour was tested automatically and reviewed in code, but not separately exercised with a physical keyboard in the native window.
-- The owner's real database was not modified to test the new sidebar, font, or traffic-light-position setting writes; those writes were tested on an isolated identifier. The owner's production database hash and contents were preserved.
-- All 49 fonts were installed on the development PC; other computers may have fewer.
-- Some family and parent/child emoji render as grey silhouette tiles in Noto Color Emoji.
-- WebView2 text-field context menus may still list browser-provided “Emoji” and “Import passwords” entries.
-- Sidebar transition frame times were not profiled. The installer is unsigned.
-
-## [1.0.0] - 2026-11-07
-
-First public Windows release.
-
-### Added
-- Bundled searchable catalogue of 3,963 fully-qualified Unicode Emoji 18.0 entries.
-- CLDR 49 English names and annotation keywords.
-- Nine category groups and a virtualized emoji grid.
-- Deterministic local search with name and keyword matching.
-- Persistent Favorites stored in local SQLite.
-- Recently Used history, newest-first and capped at 100 unique entries.
-- Exact Unicode clipboard copying, including multi-code-point sequences.
-- Dark, Light, and System appearance modes.
-- Bundled Noto Color Emoji 2.057 for broader Emoji 18.0 glyph coverage.
-- Local-first, offline-capable core functionality.
-- Windows x64 NSIS installer.
-
-### Quality and verification
-- 210/210 frontend tests passed.
-- Unicode catalogue validation: 27/27 checks passed.
-- TypeScript typecheck, lint, production build, Rust formatting and compilation checks passed.
-- Production dependency audit: 0 vulnerabilities.
-- Installer fresh-install, launch, same-version reinstall, and uninstall checks completed on the development PC.
-
-### Known limitations
-- The installer is unsigned.
-- Clean-machine and Windows 11 installation tests were not completed.
-- Screen-reader and hardware display-scaling tests above 100% remain outstanding.
-- Some family/parent-child glyphs appear as grey silhouette tiles in the bundled Noto font.
-- WebView2 text-field context menu retains a few browser-provided entries.
+## [1.0.0] — 2026-11-07
+- First release: 3,963-entry Unicode 18.0 emoji catalogue, categories, ranked search, Favorites, Recently Used (100 entries), exact copy to the clipboard, Dark / Light / System appearance, local SQLite storage.
+- Installer: `Emo-Xpress_1.0.0_x64-setup.exe`, SHA-256 `45263613c649bd842ad74c73565545ab17aa76b6c1204d13adf9f113a178ba69`, not code-signed.
