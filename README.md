@@ -1,7 +1,7 @@
 # Emo-Xpress
 
 <p align="center">
-  <img src="assets/Emo-Xpress_v2.0.0_64x64.png" alt="Emo-Xpress v2.0.0 logo" width="96" height="96" />
+  <img src="assets/Emo-Xpress_v2.0.0_256x256.png" alt="Emo-Xpress v2.0.0 logo" width="256" height="256" />
 </p>
 
 <h2 align="center">Every emotion. One expression.</h2>
