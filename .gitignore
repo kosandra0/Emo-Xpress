@@ -6,3 +6,13 @@ src-tauri/gen
 scripts/.cache
 .DS_Store
 *.log
+
+# Private local data and release verification: never upload to GitHub
+Emo-Xpress-DB-Backups/
+Emo-Xpress-Source-Snapshots/
+Emo-Xpress-Verification-*/
+*.db
+*.db-wal
+*.db-shm
+.env
+.env.*

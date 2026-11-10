@@ -1,57 +1,39 @@
 # Privacy
 
-**Emo-Xpress 1.1.1 is a local-first Windows desktop application.**
+**Emo-Xpress 2.0.0 is a local-first Windows desktop application.** The offline catalogue, browsing, collections and local Expression Studio do not require an account, cloud service or AI subscription.
 
-## Information stored locally
+## Data stored locally
 
-Emo-Xpress stores user preferences and user-created content in its local SQLite database under the Windows application data location for application identifier `com.emoxpress.desktop`. The program installation directory and the user database are separate.
+Emo-Xpress stores user data in its local SQLite database under the Windows application data location for `com.emoxpress.desktop`. Depending on features used, this includes Favorites, Recently Used emoji, collections, folders, saved combinations, appearance and other application preferences, expression presets, optional history and local feedback.
 
-Depending on the features used, locally stored information includes:
-
-- Favorites.
-- Recently Used emoji history (up to 100 unique entries).
-- Personal collection names, ordering and emoji membership.
-- Folder names, ordering and collection-to-folder relationships.
-- Saved custom combination names and their ordered emoji sequences.
-- Appearance preference (System, Light or Dark).
-- Selected application colour-theme palette.
-- Selected Emoji Name Style (`emoji_name_style` setting).
-- Close behaviour (minimize to system tray or exit application).
-- Window corner-radius preference.
-- Sidebar expanded/collapsed preference.
-- Traffic-light window-control position.
-- Selected interface font preference.
-
-Update Logs are bundled static content. They are not personal data and do not require a database or network connection.
-
-The application does not require an account or cloud profile to use these features.
-
-## Database migration and backups
-
-Version 1.1.1 introduces no new SQLite migration. It continues to use migrations `0001` and `0002`; the selected application theme and Emoji Name Style are saved as ordinary `app_settings` values.
-
-The first launch of v1.1.0 applies migration `0002`, which adds the data structures used for collections, folders and combinations. **Version 1.0.1 cannot open a database after migration 0002 has been applied.** Back up `emoxpress.db` before upgrading from v1.0.1, and keep matching `emoxpress.db-wal` and `emoxpress.db-shm` files with the backup if they exist.
-
-Version 1.1.0 can open a database used by v1.1.1, but it does not recognise the newer theme and Emoji Name Style values. It uses its own default appearance and leaves those setting rows untouched. See the release notes for the upgrade and rollback procedure.
+Expression history is **off by default**. Raw prompt text is not retained unless the user separately enables that option. History and personalisation can be cleared from the application. No account, cloud profile, analytics or telemetry is required.
 
 ## Clipboard
 
-Emo-Xpress writes an emoji or saved combination to the Windows clipboard only when the user chooses to copy it. A custom combination is copied as its ordered sequence, with no inserted separators.
+Emo-Xpress writes emoji or a saved combination to the Windows clipboard only when the user chooses to copy it. It does not read clipboard contents, monitor clipboard changes or automatically paste into other applications.
 
-The application has clipboard write permission for this feature. It does **not** read clipboard contents, monitor clipboard changes, maintain a system-wide clipboard history, or automatically paste into other applications. Copying a combination does not add it to Recently Used.
+## Optional AI assistance and network requests
 
-## Fonts and emoji rendering
+Optional Anthropic AI assistance is **off by default**. The application makes no provider request for ordinary offline use. A request occurs only after the user enables AI assistance, reviews the consent disclosure and explicitly selects **Improve with AI**.
 
-The typography selector uses fonts installed on the Windows computer. Emo-Xpress does not download selectable interface fonts. The bundled Noto Color Emoji font is used for emoji rendering; the chosen interface font and Emoji Name Style do not alter the Unicode sequence copied to the clipboard.
+When invoked:
+- The only provider host is `api.anthropic.com`, fixed at build time and contacted over HTTPS from the Rust side.
+- The request may include the prompt text for that action, selected mode, context and tone settings, and a bounded list of candidate emoji IDs and names selected locally.
+- Favorites, Recently Used, collections, saved combinations, history, clipboard contents and local feedback are not sent by default.
+- The provider re-ranks candidates already selected by the offline engine; it does not invent catalogue entries.
+- The response is schema-validated. Returned IDs must belong to the supplied candidate list, and emoji text is rebuilt locally.
+- If the request fails, the application keeps or returns to local suggestions.
 
-## Network, accounts and tracking
+Your Anthropic API key is stored in Windows Credential Manager or, if persistent credential storage is unavailable, in memory for the current session only. The key is never returned to JavaScript and is not written to the app database or logs.
 
-Core application features use the bundled catalogue and local database. Update Logs are bundled. Emo-Xpress does not require an account, cloud synchronization, an AI provider, telemetry, analytics or advertising, and the app makes no background network requests for its core features.
+Using your own provider API key may incur charges under that provider's pricing and terms. The optional provider was not live-tested during the v2.0.0 release because no API key was available; automated mock-provider tests passed.
 
-The About page includes an optional GitHub profile link. Only when the user chooses that link does Emo-Xpress open the fixed `https://github.com/kosandra0` address in the default browser. The browser may then access GitHub according to the user's browser and network settings. The Copy Link action writes the URL to the clipboard; it does not open a page.
+## Database and upgrades
 
-The installer may need the WebView2 runtime. The v1.1.1 Sandbox verification supplied a runtime to the test environment; the installer's own online WebView2 download step was not exercised.
+Version 2.0.0 adds no SQLite migration beyond the existing migrations `0001` and `0002`. New expression preferences are stored as bounded, versioned values in the existing `app_settings` table. Back up the database before upgrading. The v2.0.0 upgrade and 1.1.1 rollback compatibility path were checked in Windows Sandbox.
 
-## Removing local data
+## Removing local data and credentials
 
-The application database is stored outside the program installation directory under the Windows application data location for `com.emoxpress.desktop`. Back up the database before manually removing it. Uninstalling the application and deleting its user data are separate actions; consult the release notes before removing database files.
+Uninstalling the program and deleting its user data are separate actions. User data is stored outside the installation directory under `%APPDATA%\com.emoxpress.desktop`. Back up the database before manually removing it.
+
+To remove a saved AI key, use the application's **Remove key** control in AI assistance settings, or remove the `Emo-Xpress/anthropic-api-key` entry from Windows Credential Manager.

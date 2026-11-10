@@ -1,3 +1,30 @@
+## [2.0.0] — 2026-11-10
+
+### Added
+- **Expression Studio:** six modes for expressing an idea, creating an emoji-only summary, decorating text, adjusting tone, drafting a reply idea and explaining an expression. Includes 12 contexts plus a custom context, five tone controls, strict Minimal (1–2), Balanced (3–4) and Expressive (5–7) styles, explanations, copy, save and collection actions. The deterministic local engine works offline.
+- **Contextual suggestions:** optional Ideas panels for the library, collections and saved combinations, plus “Suggest by meaning” from a no-results search. Suggestions are off by default; ordinary search ranking is unchanged.
+- **Personalisation:** local defaults, up to 20 presets, optional history (off by default), separately consented raw-prompt retention, Useful / Not useful feedback, favourite patterns and reset controls.
+- **Optional Anthropic assistance:** off by default, explicit consent and user action required. Requests use a fixed HTTPS host through Rust; keys are kept in Windows Credential Manager or session memory, never in app storage or logs. Provider output is schema-checked and falls back to local suggestions.
+- **v2.0.0 branding:** owner-supplied logo used in the sidebar, About page, Windows executable, installer and shortcuts.
+
+### Changed
+- Version 1.1.1 → 2.0.0 across package and Tauri metadata.
+- About privacy wording now describes the optional AI network path accurately.
+
+### Fixed
+- Reply ideas now respond appropriately to good news, thanks and bereavement-related messages.
+- Closed Ideas panels no longer expose an invalid `aria-controls` target.
+
+### Compatibility
+- No new SQLite migration. Expression settings are bounded, versioned values in the existing `app_settings` table. Upgrade 1.1.1 → 2.0.0 and rollback compatibility were verified in Windows Sandbox.
+- Content Security Policy and window capabilities are unchanged.
+
+### Verification
+- 3,300 frontend tests passed across 58 files; 19 Rust tests passed.
+- Typecheck, lint, formatting, Cargo check, Clippy (0 warnings), catalogue validation (27/27) and production dependency audit (0 vulnerabilities) passed.
+- Windows Sandbox install, launch, shortcut, close and uninstall checks passed.
+- Installer is unsigned. No real Anthropic request was made because no API key was available. A real screen-reader session, physical display-scaling change and `cargo audit` were not completed.
+
 # Changelog
 
 All notable changes to Emo-Xpress. Dates are in India Standard Time. Earlier entries are summarised from `MASTER_DEVELOPMENT.md`.

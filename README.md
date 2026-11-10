@@ -1,166 +1,130 @@
 # Emo-Xpress
 
 <p align="center">
-  <img src="assets/Emo-Xpress_v1.1.1.png" alt="Emo-Xpress v1.1.1 logo" width="192" />
+  <img src="assets/Emo-Xpress_v2.0.0_64x64.png" alt="Emo-Xpress v2.0.0 logo" width="96" height="96" />
 </p>
 
 <h2 align="center">Every emotion. One expression.</h2>
-
-<p align="center">A personal emoji hub for Windows · Unicode Emoji 18.0 · CLDR 49</p>
+<p align="center">A local-first Windows emoji library and expression assistant.</p>
+<p align="center">Windows 10/11 · x64 · Version 2.0.0</p>
 
 <p align="center">
-  <a href="https://github.com/kosandra0/Emo-Xpress/releases">GitHub Releases</a> ·
+  <a href="https://github.com/kosandra0/Emo-Xpress/releases">Releases</a> ·
   <a href="CHANGELOG.md">Changelog</a> ·
-  <a href="RELEASE_NOTES_v1.1.1.md">v1.1.1 release notes</a> ·
-  <a href="THIRD_PARTY_NOTICES.md">Third-party notices</a> ·
-  <a href="PRIVACY.md">Privacy</a>
+  <a href="RELEASE_NOTES_v2.0.0.md">v2.0.0 release notes</a> ·
+  <a href="PRIVACY.md">Privacy</a> ·
+  <a href="THIRD_PARTY_NOTICES.md">Third-party notices</a>
 </p>
 
 ---
 
-## Current version: 1.1.1
+## Version 2.0.0
 
-The v1.1.1 Windows x64 installer has been built and verified in a disposable Windows Sandbox. **The owner has not yet published the GitHub Release or uploaded the installer.** Check the [Releases page](https://github.com/kosandra0/Emo-Xpress/releases) for public availability.
+Emo-Xpress is a Windows desktop emoji library, organiser and expression assistant. Browse the Unicode catalogue, organise collections, create reusable combinations, or describe what you want to express and receive emoji suggestions.
 
-Emo-Xpress is a local-first Windows desktop emoji library and personal organiser. Browse and search the Unicode catalogue, organise personal collections, build reusable emoji expressions, and customise the interface.
+**The core Expression Studio works offline.** Optional Anthropic assistance is off by default and is never required for local features.
 
-## Emoji library
+## Downloads
 
-- 3,963 fully-qualified Unicode Emoji 18.0 entries.
-- English names and search annotations from Unicode CLDR 49.
-- Nine standard categories and local ranked search.
-- Persistent Favorites and Recently Used history (up to 100 unique emoji).
-- Exact Unicode clipboard copying, including flags, keycaps, skin-tone modifiers, tag sequences and ZWJ sequences.
+The v2.0.0 installer and standalone executable have been built and verified. Their release files are prepared, but they have not yet been attached to a GitHub Release. Check the [Releases page](https://github.com/kosandra0/Emo-Xpress/releases) for publication.
 
-## What's new in v1.1.1
+| File | Size | SHA-256 |
+|---|---:|---|
+| `Emo-Xpress_2.0.0_x64-setup.exe` (recommended installer) | 4,719,856 bytes | `09bad3c988b0763f971f0172c0d453582925920cacebb66c99851952ed8eb972f` |
+| `Emo-Xpress_2.0.0_windows-x64_standalone.exe` | 7,789,568 bytes | `a2a88952145874484582007b57280104b4492368f46ae1f6aa18e8b53c67b26b` |
 
-### Personalisation
-- **18 application themes:** Default, Aurora, Cyberpunk, Ocean, Emerald, Sunset, Rose, Violet Dreams, Sakura Mist, Tranquil Sky, Lavender Haze, Forest Sanctuary, Arctic Serenity, Desert Dusk, Moonlit Pearl, Coastal Breeze, Peach Blossom and Amethyst Calm.
-- Every palette styles the wider application surfaces, including backgrounds, ambient lighting, sidebar and header glass, cards, borders, dialogs and feedback messages. Dark, Light and System appearance modes remain independent of the selected palette. The original Default theme is preserved.
-- **10 Emoji Name Styles:** Monochrome, Violet Mist, Glacier, Mint Leaf, Rose Petal, Coral Peach, Amber Gold, Deep Ocean, Pistachio Pastel and Bold Focus. These styles affect the names beneath emoji cards only; they do not recolour emoji glyphs or unrelated interface text.
-
-### Navigation and history
-- **Update Logs:** an offline history page below About, with date navigation, chronological entries, release and milestone labels, and detailed explanations. Entries without a recorded time are labelled honestly.
-- **Responsive Settings and About:** their cards, sections, typography and controls adapt to the available content width, from the minimum window to maximized, with the sidebar expanded or collapsed.
-
-### Developer and branding
-- **Developer attribution:** About displays **kosandra0 (musafir)** with a GitHub profile link and a Copy Link fallback. The app opens only the fixed profile URL when the user chooses the link.
-- **Updated v1.1.1 logo** in the sidebar, About page and generated Windows icon set.
-
-### Fixes
-- Settings sections with multi-word titles now have accessible names.
-- The collection emoji picker's search field no longer leaves a large gap above the results.
-
-## Preserved functionality
-
-The v1.1.1 release retains the 3,963-entry Unicode catalogue, CLDR 49 annotations, nine categories, ranked search, Favorites, Recently Used, exact clipboard copy, personal collections, folders, custom combinations, Saved Combinations, Dark / Light / System appearance, interface font choice, sidebar collapse, system tray, close behaviour, custom window corner radius and window controls.
-
-## v1.1.1 installer information
-
-| Item | Value |
-|---|---|
-| File | `Emo-Xpress_1.1.1_x64-setup.exe` |
-| Architecture | Windows x64 |
-| Size | 4,494,821 bytes (4.29 MiB) |
-| SHA-256 | `ca1a7e72fbc31f99bf37b872630c942f4e564da22942c1ef0e0eb8ab3d379457` |
-| Install mode | Per-user, into `%LOCALAPPDATA%\Emo-Xpress` |
-| Code signing | Unsigned |
-
-The installer binary is not committed to the Git repository. The owner will attach it to the v1.1.1 GitHub Release.
-
-### Windows SmartScreen
-
-The installer is unsigned, so Windows may display a SmartScreen warning. Verify the downloaded file before running it:
+Verify a downloaded installer before running it:
 
 ```powershell
-Get-FileHash .\Emo-Xpress_1.1.1_x64-setup.exe -Algorithm SHA256
+Get-FileHash .\Emo-Xpress_2.0.0_x64-setup.exe -Algorithm SHA256
 ```
 
-Compare the result with the SHA-256 above and in [SHA256SUMS.txt](SHA256SUMS.txt). The interactive SmartScreen warning was not observed during the silent Sandbox installation checks.
+The installer is **not code-signed**. Windows SmartScreen may show a warning. Compare the SHA-256 with `SHA256SUMS.txt` before choosing **More info → Run anyway**.
 
-## Upgrade notes
+## What's new
 
-There is **no new database migration in v1.1.1**. It uses the v1.1.0 database layout; the selected theme and Emoji Name Style are stored as ordinary `app_settings` values.
+### Expression Studio
 
-Before upgrading an installation you care about:
+Describe a feeling or provide a sentence and get emoji suggestions in six modes:
 
-1. Quit Emo-Xpress completely, including the system-tray instance.
-2. Back up `%APPDATA%\com.emoxpress.desktop\emoxpress.db`.
-3. Keep matching `emoxpress.db-wal` and `emoxpress.db-shm` files with the backup if they exist.
-4. Install v1.1.1 over the existing application.
-5. Launch it and verify Favorites, Recently Used, collections, folders, combinations and preferences.
+1. Express an idea.
+2. Emoji-only summary.
+3. Add emoji to your text.
+4. Adjust the tone.
+5. Create a reply idea.
+6. Explain an expression.
 
-**Upgrading from v1.0.1:** the first launch applies the v1.1.0 migration (`0002`), which is one-way for v1.0.1 compatibility. Version 1.0.1 cannot open a database after migration 0002 has been applied. Keep a pre-upgrade backup if you may need to return to v1.0.1; see the [v1.1.0 release notes](RELEASE_NOTES_v1.1.0.md) for the detailed restoration procedure.
+Choose from 12 contexts plus a custom context, five tone controls, and three strict output styles:
 
-### Returning to v1.1.0
+- **Minimal:** 1–2 emoji.
+- **Balanced:** 3–4 emoji.
+- **Expressive:** 5–7 emoji.
 
-Quit the app and keep a copy of the v1.1.1-used database files. Uninstall v1.1.1 and install v1.1.0. Version 1.1.0 can open the same database but does not recognise the new theme and name-style setting values; it uses its default appearance and leaves the unknown values in the database. Reinstalling v1.1.1 restores those preferences. To return to a database backup from before an upgrade, move the current database, WAL and SHM files aside together and restore the backup.
+Suggestions include concise explanations and preserve exact Unicode sequences. The local engine uses a built-in English vocabulary; unknown words are identified rather than guessed.
 
-## Verification summary
+### Contextual suggestions and semantic search
 
-The v1.1.1 development record reports:
+Optional suggestion panels can offer ideas in the emoji library, collections and saved combinations. They are **off by default**. “Suggest by meaning” is available from a no-results search and runs only when pressed. Existing ordinary emoji search remains unchanged.
 
-| Check | Result |
-|---|---:|
-| Frontend tests | 2,815 passed across 35 files |
-| Rust tests | 4 passed |
-| TypeScript typecheck | Passed |
-| ESLint | Passed |
-| Unicode catalogue validation | Passed |
-| Production build | Passed |
-| Rust formatting and compilation | Passed |
-| Production dependency audit | 0 vulnerabilities |
-| Windows Sandbox installer checks | 126/126 passed |
+### Personalisation
 
-The Sandbox tests covered a fresh install, upgrade from a disposable v1.1.0 installation, restart and persistence, uninstall/reinstall, downgrade to v1.1.0 and restoration. Tests used disposable profiles and databases, not the owner's live installation or database.
+- User-controlled defaults for context, tone, result count and preferred expression length.
+- Up to 20 saved presets.
+- Optional expression history, off by default.
+- Raw prompt text is retained only with separate consent.
+- Useful / Not useful feedback, favourite patterns and reset controls.
 
-Native checks covered responsive layouts, developer attribution, Update Logs, themes, Emoji Name Styles, clipboard copying, saved preferences and the updated branding.
+### Optional AI assistance
+
+AI assistance is **off by default**. When enabled, the user reviews a consent disclosure and explicitly presses “Improve with AI”. The optional provider can re-rank only candidates selected by the offline engine. Requests go to the fixed `api.anthropic.com` host over HTTPS from the Rust side. The API key is stored in Windows Credential Manager or in session memory; it is not stored in the app database, returned to JavaScript or written to logs. Provider responses are schema-checked and candidate IDs are allowlisted. Failures fall back to local suggestions.
+
+Using your own Anthropic API key may incur charges from your provider. No API key or subscription is required for offline features. The real provider request was **not live-tested** during this release because no API key was available; mock and test-double coverage passed.
+
+## Preserved features
+
+- 3,963 fully-qualified Unicode Emoji 18.0 catalogue entries, with English CLDR 49 names and annotations.
+- Nine categories, ranked search and a keyboard-accessible virtualised grid.
+- Favorites and Recently Used.
+- Exact clipboard copying, including flags, keycaps, skin tones, tag sequences and ZWJ sequences.
+- Personal collections, folders and saved combinations.
+- 18 application themes and 10 Emoji Name Styles.
+- Update Logs, About information and Windows desktop integration.
+
+## Installation and upgrade
+
+Close Emo-Xpress before installing. The per-user installer installs under `%LOCALAPPDATA%\Emo-Xpress`; application data stays under `%APPDATA%\com.emoxpress.desktop`.
+
+Upgrading from 1.x preserves Favorites, Recently Used, collections, folders, combinations and settings. Version 2.0.0 adds no new SQLite migration; it stores bounded, versioned settings in the existing `app_settings` table. The 1.1.1 compatibility/rollback path was verified in Windows Sandbox. Version 1.0.1 cannot open a database after migration 0002 has been applied, so retain a backup when upgrading from that older version.
+
+## Verification
+
+- **3,300 / 3,300** frontend tests passed across 58 files, run sequentially.
+- **19** Rust tests passed.
+- TypeScript typecheck, lint, Rust formatting, Cargo check and Clippy passed; Clippy reported 0 warnings.
+- Unicode catalogue validation: 27 / 27 checks, 3,963 entries.
+- `npm audit --omit=dev`: 0 production vulnerabilities.
+- Windows Sandbox fresh install, launch, shortcut creation, graceful close and uninstall passed.
 
 ## Known limitations
 
-- The installer is unsigned and may trigger SmartScreen.
-- Windows 11, screen readers (Narrator/NVDA), a real Windows High Contrast session and hardware display scaling above 100% were not tested.
-- The installer's WebView2 download step was not tested online; the Sandbox was offline and supplied with a WebView2 runtime.
-- The interactive SmartScreen flow was not observed because Sandbox installs were silent.
-- The tray menu and real-mouse title-bar dragging were not re-run for this release.
-- The supplied logo artwork is 256 × 256, and the app's largest generated icon renditions may appear slightly soft.
-- Some multi-part family emoji may still draw as a grey tile in the bundled emoji font.
-- Contrast measurements are not a substitute for a formal accessibility audit; performance figures come from a debug build on one Windows PC.
+- The expression vocabulary is English-only and contains about 3,000 phrases.
+- On an independent set of 120 prompts, the first suggestion contained an expected emoji for 75%; at least one of four suggestions did so for 87.5%. These are measured results, not a guarantee of correctness.
+- The Anthropic path was not tested against the live service because no API key was available.
+- The installer is unsigned.
+- A real screen-reader session and a physical Windows display-scaling change were not tested; scaling was emulated.
+- `cargo audit` was not run because the tool was not installed.
 
-## Privacy and local data
+## Privacy
 
-Emo-Xpress does not require an account, cloud sync, telemetry, analytics or advertising. Favorites, Recently Used, collections, folders, combinations and preferences are stored locally in SQLite. Update Logs are bundled static content. The app writes to the clipboard only when the user chooses to copy and does not read clipboard contents. The GitHub profile link opens the user's default browser only when explicitly clicked.
+Emo-Xpress has no account, telemetry, analytics or cloud profile. Core features use the bundled catalogue and local SQLite data. The app does not read clipboard contents. Network access is used only if optional AI assistance is enabled and the user explicitly invokes it. See [PRIVACY.md](PRIVACY.md) for details.
 
-See [PRIVACY.md](PRIVACY.md).
+## Technology
 
-## Technology and third-party data
+Tauri 2, Rust, React 19, TypeScript, Vite, SQLite, Unicode Emoji 18.0, CLDR 49 and Noto Color Emoji 2.057. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
-- React, TypeScript, Vite and Tailwind CSS 4.
-- Tauri 2 and Rust.
-- SQLite through the Tauri SQL plugin.
-- Unicode Emoji 18.0 and CLDR 49.
-- Noto Color Emoji 2.057, bundled under the SIL Open Font License 1.1.
+## Repository contents and licence
 
-See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for third-party licences and attribution.
-
-## Version roadmap
-
-| Version | Main objective |
-|---|---|
-| 1.0 | Emoji library, search, categories, Favorites, Recently Used and copying |
-| 1.0.1 | Desktop UI, window customisation, typography and branding refinement |
-| 1.1.0 | Personal collections, folders, custom combinations and initial palette themes |
-| **1.1.1** | Responsive Settings/About, Update Logs, 18 application themes, 10 Emoji Name Styles and refreshed branding |
-| 1.2 | Global shortcut, floating picker and clipboard manager |
-| 2.0 | AI expression engine and contextual recommendations |
-| 2.1 | Kaomoji, symbols, stickers and GIF collections |
-| 3.0 | Advanced analytics, synchronisation and cloud backup |
-
-## Source availability
-
-This is a **distribution-only public repository**. It contains public-facing documentation, release information, checksums, installers when published and third-party distribution notices. Application source code and the private append-only development record are not published here.
-
-No open-source licence is granted to the Emo-Xpress application source or original application artwork by this repository. Third-party materials remain subject to their respective licences, as described in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+This public repository contains public-facing release documentation, checksums and visual assets. It does **not** publish the application's full source tree. No project software licence has been selected or added yet; do not assume that the application source or original artwork is licensed for reuse. Third-party materials remain subject to their respective licences.
 
 ---
 
