@@ -1,16 +1,18 @@
 # Emo-Xpress
 
 <p align="center">
-  <img src="assets/Emo-Xpress_v2.0.0_256x256.png" alt="Emo-Xpress v2.0.0 logo" width="256" height="256" />
+  <img src="assets/Emo-Xpress_v2.1.0_256x256.png" alt="Emo-Xpress v2.1.0 logo" width="256" height="256" />
 </p>
 
 <h2 align="center">Every emotion. One expression.</h2>
 <p align="center">A local-first Windows emoji library and expression assistant.</p>
-<p align="center">Windows 10/11 · x64 · Version 2.0.0</p>
+<p align="center">Windows 10/11 · x64 · Version 2.1.0</p>
 
 <p align="center">
   <a href="https://github.com/kosandra0/Emo-Xpress/releases">Releases</a> ·
   <a href="CHANGELOG.md">Changelog</a> ·
+  <a href="RELEASE_NOTES_v2.1.0.md">v2.1.0 release notes</a> ·
+  <a href="SECURITY-ADVISORIES_v2.1.0.md">v2.1.0 security advisories</a> ·
   <a href="RELEASE_NOTES_v2.0.0.md">v2.0.0 release notes</a> ·
   <a href="PRIVACY.md">Privacy</a> ·
   <a href="THIRD_PARTY_NOTICES.md">Third-party notices</a>
@@ -18,30 +20,41 @@
 
 ---
 
-## Version 2.0.0
+## Version 2.1.0
 
 Emo-Xpress is a Windows desktop emoji library, organiser and expression assistant. Browse the Unicode catalogue, organise collections, create reusable combinations, or describe what you want to express and receive emoji suggestions.
+
+**New in 2.1.0:** a global hotkey (default `Ctrl+Shift+E`) opens a floating **Quick Picker** over whatever window you are using, so you can choose an emoji and have it typed into that window. Emo-Xpress runs in the system tray, and the hotkey is customisable in Settings. See [RELEASE_NOTES_v2.1.0.md](RELEASE_NOTES_v2.1.0.md) for details and for what has and has not been tested.
 
 **The core Expression Studio works offline.** Optional Anthropic assistance is off by default and is never required for local features.
 
 ## Downloads
 
-The v2.0.0 installer and standalone executable have been built and verified. Their release files are prepared, but they have not yet been attached to a GitHub Release. Check the [Releases page](https://github.com/kosandra0/Emo-Xpress/releases) for publication.
+Release files are listed on the [Releases page](https://github.com/kosandra0/Emo-Xpress/releases).
 
 | File | Size | SHA-256 |
 |---|---:|---|
-| `Emo-Xpress_2.0.0_x64-setup.exe` (recommended installer) | 4,719,856 bytes | `09bad3c988b0763f971f0172c0d453582925920cacebb66c99851952ed8eb972f` |
-| `Emo-Xpress_2.0.0_windows-x64_standalone.exe` | 7,789,568 bytes | `a2a88952145874484582007b57280104b4492368f46ae1f6aa18e8b53c67b26b` |
+| `Emo-Xpress_2.1.0_x64-setup.exe` (recommended installer) | 4,756,819 bytes | `F3FB00B27F2EE6C4F3A64D2F69C7D61E3C20B38C57E3C3F0C6A5111BAFC0084C` |
+| `Emo-Xpress_2.1.0_windows-x64_standalone.exe` (runs without installing) | 7,885,824 bytes | `9AEF7C025647DE77D29200EBCB8F70ED49C91B9237349690005AAF4789F61BA6` |
 
-Verify a downloaded installer before running it:
+Verify a downloaded file before running it:
 
 ```powershell
-Get-FileHash .\Emo-Xpress_2.0.0_x64-setup.exe -Algorithm SHA256
+Get-FileHash .\Emo-Xpress_2.1.0_x64-setup.exe -Algorithm SHA256
 ```
 
-The installer is **not code-signed**. Windows SmartScreen may show a warning. Compare the SHA-256 with `SHA256SUMS.txt` before choosing **More info → Run anyway**.
+Both files are **not code-signed**. Windows SmartScreen may show a warning. Compare the SHA-256 with `SHA256SUMS.txt` before choosing **More info → Run anyway**.
 
 ## What's new
+
+### Quick Picker and Windows integration (2.1.0)
+
+- **Global hotkey** `Ctrl+Shift+E` (default). Change it in Settings → Quick Picker and press Save; Restore default returns to `Ctrl+Shift+E`.
+- **Floating picker:** search by name or meaning, arrow keys to move, Enter to choose, Escape to clear or close. The picker closes when it loses focus.
+- **Insert or copy:** types the emoji into the window you were using (default), or copies it to the clipboard only. If the previous window cannot receive typing, the emoji is copied instead and the picker says so.
+- **Tray:** "Open Quick Picker" and "Settings" in the tray menu. With the tray close option on, closing the main window keeps the hotkey working.
+- **Favorites and Recently Used** stay current between the picker and the main window.
+- **Themes:** the picker uses the app's appearance settings.
 
 ### Expression Studio
 
@@ -94,9 +107,20 @@ Using your own Anthropic API key may incur charges from your provider. No API ke
 
 Close Emo-Xpress before installing. The per-user installer installs under `%LOCALAPPDATA%\Emo-Xpress`; application data stays under `%APPDATA%\com.emoxpress.desktop`.
 
-Upgrading from 1.x preserves Favorites, Recently Used, collections, folders, combinations and settings. Version 2.0.0 adds no new SQLite migration; it stores bounded, versioned settings in the existing `app_settings` table. The 1.1.1 compatibility/rollback path was verified in Windows Sandbox. Version 1.0.1 cannot open a database after migration 0002 has been applied, so retain a backup when upgrading from that older version.
+Upgrading from 2.0.0 to 2.1.0 is in place and adds no database migration; it adds two settings rows for the Quick Picker. Upgrading from 1.x preserves Favorites, Recently Used, collections, folders, combinations and settings. Version 2.0.0 adds no new SQLite migration; it stores bounded, versioned settings in the existing `app_settings` table. The 1.1.1 compatibility/rollback path was verified in Windows Sandbox. Version 1.0.1 cannot open a database after migration 0002 has been applied, so retain a backup when upgrading from that older version.
 
 ## Verification
+
+### Version 2.1.0 (2026-11-12)
+
+- **3,328 / 3,328** frontend tests passed across 59 files.
+- **22 / 22** Rust tests passed. Typecheck, lint, `cargo clippy --all-targets` (no warnings) and the production build passed.
+- Windows installer and standalone executable built; the supplied icon was confirmed inside both by byte comparison.
+- Upgrade 2.0.0 → 2.1.0 on the maintainer's PC after a verified database backup: installer exit 0, app launched, database row counts identical before and after.
+- Windows Sandbox: upgrade and rollback with synthetic data; the Quick Picker inserted emoji into Notepad (visual observation by the maintainer).
+- Items not yet independently confirmed are listed in [RELEASE_NOTES_v2.1.0.md](RELEASE_NOTES_v2.1.0.md).
+
+### Version 2.0.0 (reference)
 
 - **3,300 / 3,300** frontend tests passed across 58 files, run sequentially.
 - **19** Rust tests passed.
@@ -107,6 +131,8 @@ Upgrading from 1.x preserves Favorites, Recently Used, collections, folders, com
 
 ## Known limitations
 
+- **Quick Picker:** insertion was observed working in Notepad only. Other applications, administrator-elevated windows and the clipboard fallback in every case still need independent testing. See [RELEASE_NOTES_v2.1.0.md](RELEASE_NOTES_v2.1.0.md).
+- **Dependency advisory RUSTSEC-2026-0459 is open** in 2.1.0 (SQLite 3.46.0 through `tauri-plugin-sql`). The fix needs a database-layer upgrade planned for a later release. See [SECURITY-ADVISORIES_v2.1.0.md](SECURITY-ADVISORIES_v2.1.0.md).
 - The expression vocabulary is English-only and contains about 3,000 phrases.
 - On an independent set of 120 prompts, the first suggestion contained an expected emoji for 75%; at least one of four suggestions did so for 87.5%. These are measured results, not a guarantee of correctness.
 - The Anthropic path was not tested against the live service because no API key was available.

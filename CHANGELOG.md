@@ -1,3 +1,33 @@
+## [2.1.0] — 2026-11-12
+
+### Added
+- **Quick Picker:** a global hotkey (default `Ctrl+Shift+E`) opens a small floating emoji picker over the active window, with search by name or meaning, the same catalogue and categories, arrow-key navigation, Enter to choose and Escape to clear or close. The picker closes when it loses focus.
+- **Insert or copy:** after a choice, the emoji is typed into the window that was active before the picker opened (default), or copied to the clipboard only (Settings → Quick Picker). If the previous window cannot receive typing, the emoji is copied and the picker says so.
+- **Custom global hotkey:** Settings → Quick Picker. Press a new combination and Save; Restore default returns to `Ctrl+Shift+E`. Refused: shortcuts without Ctrl or Alt, shortcuts used by another program, and Windows-reserved combinations. A refused change never replaces the working shortcut.
+- **Tray:** "Open Quick Picker" and "Settings" in the tray menu. Exit from the tray releases the hotkey and closes all windows.
+- **Windows icon:** the supplied Emo-Xpress icon is embedded in the executable and installer. The in-app logo is unchanged.
+
+### Changed
+- Emoji chosen in the Quick Picker are recorded in Recently Used. Favorites and Recently Used are re-read when the main window regains focus.
+- Version 2.0.0 → 2.1.0 in the package and Tauri metadata.
+
+### Compatibility
+- **No new database migration** (still `0001` and `0002`). Two rows are added to the existing `app_settings` table: `quick_picker_shortcut` and `quick_picker_behavior`. No existing row is changed.
+- New Rust dependency: `tauri-plugin-global-shortcut` 2.4.x. No npm dependency was added.
+
+### Security
+- The Quick Picker window has its own capability file with minimum permissions: SQL read, clipboard write and event listening.
+- The main window's capability gains only event listen and unlisten permissions. No network, shell, filesystem or process permission was added. The Content Security Policy is unchanged.
+- Dependency advisory RUSTSEC-2026-0459 (SQLite 3.46.0 through `tauri-plugin-sql`) is **open** in this release. See `SECURITY-ADVISORIES_v2.1.0.md`.
+
+### Verification
+- Frontend: 3,328 of 3,328 tests passed across 59 files. Typecheck and lint passed.
+- Rust: 22 of 22 tests passed. `cargo clippy --all-targets` reported no warnings. Production build passed.
+- Installer and standalone executable built; the supplied icon was confirmed inside both (byte comparison).
+- Upgrade 2.0.0 → 2.1.0 run on the maintainer's PC after a verified database backup; row counts matched exactly afterwards.
+- Windows Sandbox: upgrade and rollback with synthetic data passed; the Quick Picker appeared and inserted emoji into Notepad (visual observation).
+- Still open: the independent on-PC checks listed in `RELEASE_NOTES_v2.1.0.md`.
+
 ## [2.0.0] — 2026-11-10
 
 ### Added
