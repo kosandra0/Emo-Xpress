@@ -1,16 +1,17 @@
 # Emo-Xpress
 
 <p align="center">
-  <img src="assets/Emo-Xpress_v2.1.0_256x256.png" alt="Emo-Xpress v2.1.0 logo" width="256" height="256" />
+  <img src="assets/Emo-Xpress_v2.1.1_256x256.png" alt="Emo-Xpress v2.1.1 logo" width="256" height="256" />
 </p>
 
 <h2 align="center">Every emotion. One expression.</h2>
 <p align="center">A local-first Windows emoji library and expression assistant.</p>
-<p align="center">Windows 10/11 · x64 · Version 2.1.0</p>
+<p align="center">Windows 10/11 · x64 · Version 2.1.1</p>
 
 <p align="center">
   <a href="https://github.com/kosandra0/Emo-Xpress/releases">Releases</a> ·
   <a href="CHANGELOG.md">Changelog</a> ·
+  <a href="RELEASE_NOTES_v2.1.1.md">v2.1.1 release notes</a> ·
   <a href="RELEASE_NOTES_v2.1.0.md">v2.1.0 release notes</a> ·
   <a href="SECURITY-ADVISORIES_v2.1.0.md">v2.1.0 security advisories</a> ·
   <a href="RELEASE_NOTES_v2.0.0.md">v2.0.0 release notes</a> ·
@@ -19,6 +20,10 @@
 </p>
 
 ---
+
+## Version 2.1.1
+
+Version 2.1.1 keeps the Quick Picker open after each choice, remembers the tab you used, adds an optional "Also copy to the clipboard" switch, and gives Emo-Xpress a new icon. See [RELEASE_NOTES_v2.1.1.md](RELEASE_NOTES_v2.1.1.md).
 
 ## Version 2.1.0
 
@@ -34,13 +39,13 @@ Release files are listed on the [Releases page](https://github.com/kosandra0/Emo
 
 | File | Size | SHA-256 |
 |---|---:|---|
-| `Emo-Xpress_2.1.0_x64-setup.exe` (recommended installer) | 4,756,819 bytes | `F3FB00B27F2EE6C4F3A64D2F69C7D61E3C20B38C57E3C3F0C6A5111BAFC0084C` |
-| `Emo-Xpress_2.1.0_windows-x64_standalone.exe` (runs without installing) | 7,885,824 bytes | `9AEF7C025647DE77D29200EBCB8F70ED49C91B9237349690005AAF4789F61BA6` |
+| `Emo-Xpress_2.1.1_x64-setup.exe` (recommended installer) | 4,730,807 bytes | `49b659cf32e01ad1f95006ecacc6257f9c9280fea31e6a7c68342d04ba3fbefa` |
+| `Emo-Xpress_2.1.1_windows-x64_standalone.exe` (runs without installing) | 7,874,048 bytes | `2bbfb46f3ade14964484251e8c07c7e4341037494b9338814b94f5049ad9c5c2` |
 
 Verify a downloaded file before running it:
 
 ```powershell
-Get-FileHash .\Emo-Xpress_2.1.0_x64-setup.exe -Algorithm SHA256
+Get-FileHash .\Emo-Xpress_2.1.1_x64-setup.exe -Algorithm SHA256
 ```
 
 Both files are **not code-signed**. Windows SmartScreen may show a warning. Compare the SHA-256 with `SHA256SUMS.txt` before choosing **More info → Run anyway**.

@@ -1,3 +1,31 @@
+## [2.1.1] — 2026-11-12
+
+### Changed
+- **Quick Picker stays open:** choosing an emoji no longer closes the picker, in any tab. It closes on Escape (which clears the search first) or on a click outside.
+- **Quick Picker remembers its tab:** reopening with the shortcut shows the tab used last; only the search text is cleared.
+- **Insert into the previous app:** the picker keeps focus after the emoji is typed, so several emojis can be chosen in a row. If focus cannot be returned, the picker closes.
+- **New application icon:** "Neon Smiling Planet" (`icons/Emo-Xpress_version_icons_PNGs/Neon Smiling Planet v2.1.1.png`) for the executable, installer, shortcuts and taskbar. The icon inside the window is unchanged.
+- Version 2.1.0 → 2.1.1 in `package.json`, `package-lock.json`, `src-tauri/tauri.conf.json`, `src-tauri/Cargo.toml` and `src-tauri/Cargo.lock`.
+
+### Added
+- **Settings → Quick Picker → "Also copy to the clipboard"** (shown with "Insert into the previous app"; off by default). When on, the chosen emoji is copied as well as typed.
+- Update Logs entry for 2.1.1.
+
+### Fixed
+- Settings changes (insert/copy choice and the copy switch) reach the Quick Picker when it opens. Previously the picker kept the values from its start-up until Emo-Xpress was restarted.
+
+### Compatibility
+- **No database migration** (still `0001` and `0002`). One row is added to `app_settings`: `quick_picker_copy_also` (`on` / `off`). Version 2.1.0 ignores it.
+
+### Security
+- No new permission, network access, shell access or content-security change. The capability files are unchanged.
+
+### Verification (2026-11-12, build PC)
+- `npx vitest run` (full frontend suite): **3,328 of 3,328 passed** (59 of 59 files), exit 0. Four first-run failures were version expectations hard-coded as 2.1.0; updated to 2.1.1 and re-run.
+- `npm run typecheck`: exit 0. `npm run lint`: exit 0.
+- `cargo test` (src-tauri): 22 of 22 passed.
+- `npm run tauri:build`: exit 0; installer `Emo-Xpress_2.1.1_x64-setup.exe` and the executable built. The icon bytes of all six sizes are present in the executable and the installer.
+
 ## [2.1.0] — 2026-11-12
 
 ### Added
