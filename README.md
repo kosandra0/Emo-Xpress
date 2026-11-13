@@ -1,16 +1,17 @@
 # Emo-Xpress
 
 <p align="center">
-  <img src="assets/Emo-Xpress_v2.1.1_256x256.png" alt="Emo-Xpress v2.1.1 logo" width="256" height="256" />
+  <img src="assets/Emo-Xpress_v2.1.2_256x256.png" alt="Emo-Xpress v2.1.2 logo" width="256" height="256" />
 </p>
 
 <h2 align="center">Every emotion. One expression.</h2>
 <p align="center">A local-first Windows emoji library and expression assistant.</p>
-<p align="center">Windows 10/11 · x64 · Version 2.1.1</p>
+<p align="center">Windows 10/11 · x64 · Version 2.1.2</p>
 
 <p align="center">
   <a href="https://github.com/kosandra0/Emo-Xpress/releases">Releases</a> ·
   <a href="CHANGELOG.md">Changelog</a> ·
+  <a href="RELEASE_NOTES_v2.1.2.md">v2.1.2 release notes</a> ·
   <a href="RELEASE_NOTES_v2.1.1.md">v2.1.1 release notes</a> ·
   <a href="RELEASE_NOTES_v2.1.0.md">v2.1.0 release notes</a> ·
   <a href="SECURITY-ADVISORIES_v2.1.0.md">v2.1.0 security advisories</a> ·
@@ -20,6 +21,10 @@
 </p>
 
 ---
+
+## Version 2.1.2
+
+Version 2.1.2 makes the Quick Picker fade in and out, closes it on Escape even after a mouse choice, and closes it on a click outside. It uses a new icon. See [RELEASE_NOTES_v2.1.2.md](RELEASE_NOTES_v2.1.2.md).
 
 ## Version 2.1.1
 

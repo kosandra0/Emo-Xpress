@@ -1,3 +1,26 @@
+## [2.1.2] — 2026-11-14
+
+### Changed
+- **Quick Picker fades in and out:** it fades in when its shortcut opens it, and fades out on Escape or a click outside (160 ms; shorter with "Reduce motion").
+- **New application icon** (`icons/icon_v2.1.2.ico`) for the executable, installer, shortcuts and taskbar. README logo: `assets/Emo-Xpress_v2.1.2_256x256.png`.
+
+### Fixed
+- **Escape closes the Quick Picker after a mouse choice.** Escape is handled for the whole picker window, not only the search box.
+- **Click outside closes the Quick Picker**, including after several emojis have been chosen in a row.
+- A reopen during a fade-out cancels the pending hide.
+
+### Compatibility
+- **No database change** (migrations `0001` and `0002` unchanged; no new setting).
+
+### Security
+- No new permission, network access, shell access or content-security change.
+
+### Verification (2026-11-14, build PC)
+- `npm run typecheck` exit 0; `npx eslint` on the changed files exit 0.
+- `npx vitest run`: 3,332 of 3,332 passed (60 of 60 files), exit 0, before the Update Logs entry was added; after it, `tests/update-logs-data.test.ts` 15 of 15 passed.
+- `cargo test` (src-tauri): 22 of 22 passed.
+- `npx tauri build`: exit 0. Installer and executable built; all six icon sizes are present in the executable.
+
 ## [2.1.1] — 2026-11-12
 
 ### Changed
