@@ -1,5 +1,12 @@
 # Emo-Xpress
 
+> **Start here:** [**Official website and interactive preview**](https://kosandra0.github.io/Emo-Xpress-Website/): try the emoji library, Expression Studio, Quick Picker and themes in your browser, then download the latest version.
+>
+> **Download the latest version (v2.1.2):** [website downloads](https://kosandra0.github.io/Emo-Xpress-Website/#downloads) · [GitHub Releases](https://github.com/kosandra0/Emo-Xpress/releases/latest)
+>
+> The website preview is a browser simulation, not the Windows app.
+
+
 <p align="center">
   <img src="assets/Emo-Xpress_v2.1.2_256x256.png" alt="Emo-Xpress v2.1.2 logo" width="256" height="256" />
 </p>
