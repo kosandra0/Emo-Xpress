@@ -2,22 +2,23 @@
 
 > **Start here:** [**Official website and interactive preview**](https://kosandra0.github.io/Emo-Xpress-Website/): try the emoji library, Expression Studio, Quick Picker and themes in your browser, then download the latest version.
 >
-> **Download the latest version (v2.1.2):** [website downloads](https://kosandra0.github.io/Emo-Xpress-Website/#downloads) · [GitHub Releases](https://github.com/kosandra0/Emo-Xpress/releases/latest)
+> **Download the latest version (v2.1.3):** [website downloads](https://kosandra0.github.io/Emo-Xpress-Website/#downloads) · [GitHub Releases](https://github.com/kosandra0/Emo-Xpress/releases/latest)
 >
 > The website preview is a browser simulation, not the Windows app.
 
 
 <p align="center">
-  <img src="assets/Emo-Xpress_v2.1.2_256x256.png" alt="Emo-Xpress v2.1.2 logo" width="256" height="256" />
+  <img src="assets/Emo-Xpress_v2.1.3_256x256.png" alt="Emo-Xpress v2.1.3 logo" width="256" height="256" />
 </p>
 
 <h2 align="center">Every emotion. One expression.</h2>
 <p align="center">A local-first Windows emoji library and expression assistant.</p>
-<p align="center">Windows 10/11 · x64 · Version 2.1.2</p>
+<p align="center">Windows 10/11 · x64 · Version 2.1.3</p>
 
 <p align="center">
   <a href="https://github.com/kosandra0/Emo-Xpress/releases">Releases</a> ·
   <a href="CHANGELOG.md">Changelog</a> ·
+  <a href="RELEASE_NOTES_v2.1.3.md">v2.1.3 release notes</a> ·
   <a href="RELEASE_NOTES_v2.1.2.md">v2.1.2 release notes</a> ·
   <a href="RELEASE_NOTES_v2.1.1.md">v2.1.1 release notes</a> ·
   <a href="RELEASE_NOTES_v2.1.0.md">v2.1.0 release notes</a> ·
@@ -28,6 +29,10 @@
 </p>
 
 ---
+
+## Version 2.1.3
+
+Version 2.1.3 adds a Statistics page (how many emojis you have used, and how often each one), a Settings switch to start Emo-Xpress when you sign in to Windows, and a new icon. Kaomojis show "Coming soon". See [RELEASE_NOTES_v2.1.3.md](RELEASE_NOTES_v2.1.3.md).
 
 ## Version 2.1.2
 
@@ -51,13 +56,13 @@ Release files are listed on the [Releases page](https://github.com/kosandra0/Emo
 
 | File | Size | SHA-256 |
 |---|---:|---|
-| `Emo-Xpress_2.1.1_x64-setup.exe` (recommended installer) | 4,730,807 bytes | `49b659cf32e01ad1f95006ecacc6257f9c9280fea31e6a7c68342d04ba3fbefa` |
-| `Emo-Xpress_2.1.1_windows-x64_standalone.exe` (runs without installing) | 7,874,048 bytes | `2bbfb46f3ade14964484251e8c07c7e4341037494b9338814b94f5049ad9c5c2` |
+| `Emo-Xpress_2.1.3_x64-setup.exe` (recommended installer) | 4,739,915 bytes | `ca1a614d215abffe21378b65c40e0c516915a2c71ebc0ad073d803ccd5f2fd90` |
+| `Emo-Xpress_2.1.3_windows-x64_standalone.exe` (runs without installing) | 7,887,360 bytes | `0c9413d2be8f24b005665a7b7059e7525ede1bdf3fc465c34da3bb9827054de1` |
 
 Verify a downloaded file before running it:
 
 ```powershell
-Get-FileHash .\Emo-Xpress_2.1.1_x64-setup.exe -Algorithm SHA256
+Get-FileHash .\Emo-Xpress_2.1.3_x64-setup.exe -Algorithm SHA256
 ```
 
 Both files are **not code-signed**. Windows SmartScreen may show a warning. Compare the SHA-256 with `SHA256SUMS.txt` before choosing **More info → Run anyway**.

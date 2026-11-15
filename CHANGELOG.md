@@ -1,3 +1,16 @@
+## [2.1.3] — 2026-11-15
+
+### Added
+- **Statistics page** in the sidebar: total emojis used, different emojis, most used emoji, and a table of every emoji with its use count and last-used time. Kaomojis show "Coming soon".
+- **Start at sign-in** switch in Settings > Startup (off by default). It writes `HKCU\Software\Microsoft\Windows\CurrentVersion\Run` for the current user only and starts the app minimised.
+
+### Changed
+- New application icon (`icons/icon_v2.1.3.ico`) for the executable, installer, shortcuts and taskbar.
+- Version 2.1.2 → 2.1.3 in `package.json`, `package-lock.json`, `src-tauri/tauri.conf.json`, `src-tauri/Cargo.toml` and `src-tauri/Cargo.lock`.
+
+### Compatibility
+- **Database migration 0003** (`emoji_usage` table), seeded from `recent_emojis`. Favorites, Recently Used, collections and settings are unchanged. Downgrading after running 2.1.3 is untested.
+
 ## [2.1.2] — 2026-11-14
 
 ### Changed
